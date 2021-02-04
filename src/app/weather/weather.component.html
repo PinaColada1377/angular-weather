@@ -1,0 +1,15 @@
+<div class="weather">
+    <p>Кликнете по город, что бы узнать погоду:</p>
+    <div *ngIf="weather" class="temperature">{{weather.main.temp - 273 | round}}&deg;</div>
+</div>
+
+<div>
+    <input [(ngModel)]="searchText" class="search" placeholder="Название города...">
+</div>
+
+
+<div *ngIf="addCitiesInterface" class="cities">
+    <div *ngFor="let city of allCities | appFilter: searchText" (click)="selectCity($event)" class="text"> 
+        {{city}}
+    </div>
+</div>
